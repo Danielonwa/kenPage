@@ -8,37 +8,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://klartrust.com/KENNY.png">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; scroll-behavior: smooth; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(90deg, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .timer-box { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); }
     </style>
-    <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2134312117335700');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2134312117335700&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2134312117335700');
+    fbq('track', 'PageView');
+    </script>
 </head>
 <body class="text-slate-200">
 
-    <div class="bg-blue-600 text-white text-center py-2 text-sm font-semibold">
+    <div class="bg-blue-600 text-white text-center py-2 text-sm font-semibold sticky top-0 z-50">
         NEW: The 2026 Strategy for Remote High-Paying Clients
     </div>
 
-    <main class="max-w-5xl mx-auto px-6 pt-12 pb-24">
+    <main class="max-w-5xl mx-auto px-6 pt-16 pb-24">
         
         <header class="text-center mb-12">
             <span class="uppercase tracking-widest text-blue-400 text-sm font-bold">THE POWERFUL E-BOOK GUIDE</span>
@@ -46,48 +40,100 @@ src="https://www.facebook.com/tr?id=2134312117335700&ev=PageView&noscript=1"
                 How to Land <span class="gradient-text">High-Paying</span> Remote Jobs<br class="hidden md:block"> As an African Freelancer.
             </h1>
             <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto">
-                Stop trading time for pennies. Learn the exact "New Model" we use to land high-paying jobs.
+                Stop trading time for pennies. Join thousands of African freelancers landing international clients using this exact model.
             </p>
         </header>
 
-        <div class="glass p-4 rounded-2xl shadow-2xl mb-12">
-            <div class="video-container shadow-inner bg-black">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/kfQlUHEhq14?si=-GPg98qiL-xnqE7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
+        <div class="glass p-8 rounded-3xl shadow-2xl mb-16 text-center">
+            <h3 class="text-xl font-bold mb-4">Limited Time Opportunity to Join My WhatsApp Group</h3>
             
-            <div class="flex flex-col md:flex-row justify-between items-center mt-6 px-4 gap-4">
-                <div class="flex -space-x-2">
-                    <img class="w-10 h-10 rounded-full border-2 border-slate-800" src="https://i.pravatar.cc/100?u=1" alt="user">
-                    <img class="w-10 h-10 rounded-full border-2 border-slate-800" src="https://i.pravatar.cc/100?u=2" alt="user">
-                    <img class="w-10 h-10 rounded-full border-2 border-slate-800" src="https://i.pravatar.cc/100?u=3" alt="user">
-                    <div class="pl-4 text-sm text-slate-400 font-medium">Joined by 12,400+ students</div>
+            <div id="countdown" class="flex justify-center gap-4 mb-8">
+                <div class="timer-box p-4 rounded-xl min-w-[80px]">
+                    <span id="hours" class="text-3xl font-black text-blue-400">06</span>
+                    <div class="text-[10px] uppercase tracking-widest opacity-50">Hours</div>
                 </div>
-                <a href="#apply" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20">
-                    Apply to Join the Program →
+                <div class="timer-box p-4 rounded-xl min-w-[80px]">
+                    <span id="minutes" class="text-3xl font-black text-blue-400">00</span>
+                    <div class="text-[10px] uppercase tracking-widest opacity-50">Mins</div>
+                </div>
+                <div class="timer-box p-4 rounded-xl min-w-[80px]">
+                    <span id="seconds" class="text-3xl font-black text-blue-400">00</span>
+                    <div class="text-[10px] uppercase tracking-widest opacity-50">Secs</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-6">
+                <a href="YOUR_WHATSAPP_LINK_HERE" class="w-full md:w-auto bg-green-600 hover:bg-green-500 text-white px-12 py-5 rounded-full font-black text-xl transition-all transform hover:scale-105 shadow-lg shadow-green-500/20 uppercase tracking-tight">
+                    Join My WhatsApp Group Now →
                 </a>
+
+                <div class="flex items-center gap-3">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-slate-800" src="https://i.pravatar.cc/100?u=1" alt="user">
+                        <img class="w-8 h-8 rounded-full border-2 border-slate-800" src="https://i.pravatar.cc/100?u=2" alt="user">
+                        <img class="w-8 h-8 rounded-full border-2 border-slate-800" src="https://i.pravatar.cc/100?u=3" alt="user">
+                    </div>
+                    <div class="text-sm text-slate-400 font-medium">Joined by 4,700+ freelancers</div>
+                </div>
             </div>
         </div>
 
         <div class="text-center">
-            <p class="text-slate-500 text-sm uppercase tracking-widest mb-6">Our Students Work With</p>
-            <div class="flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-                <span class="text-2xl font-bold">STRIPE</span>
-                <span class="text-2xl font-bold">CLICKFUNNELS</span>
-                <span class="text-2xl font-bold">HUBSPOT</span>
-                <span class="text-2xl font-bold">SKOOL</span>
+            <p class="text-slate-500 text-sm uppercase tracking-widest mb-8">Our Students Work With</p>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-30 grayscale contrast-125">
+                <span class="text-2xl font-black">STRIPE</span>
+                <span class="text-2xl font-black">CLICKFUNNELS</span>
+                <span class="text-2xl font-black">HUBSPOT</span>
+                <span class="text-2xl font-black">SKOOL</span>
             </div>
         </div>
 
     </main>
 
-    <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-xs">
-        <p>&copy; 2026 Your Name/Brand. All rights reserved.</p>
-        <div class="mt-2 space-x-4">
-            <a href="#" class="hover:text-white">Privacy Policy</a>
-            <a href="#" class="hover:text-white">Terms of Service</a>
+    <footer class="border-t border-slate-800 py-12 text-center text-slate-500 text-xs">
+        <p>&copy; 2026 OKOLI KENNEDY. All rights reserved.</p>
+        <div class="mt-4 space-x-6">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
         </div>
     </footer>
 
-</body>
+    <script>
+        // COUNTDOWN TIMER LOGIC
+        function startTimer() {
+            const countdownDuration = 6 * 60 * 60 * 1000; // 6 Hours in milliseconds
+            let endTime = localStorage.getItem('whatsapp_group_deadline');
 
+            if (!endTime) {
+                endTime = new Date().getTime() + countdownDuration;
+                localStorage.setItem('whatsapp_group_deadline', endTime);
+            }
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                // Time calculations
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+                // If the count down is finished, reset it (or show expired message)
+                if (distance < 0) {
+                    clearInterval(x);
+                    localStorage.removeItem('whatsapp_group_deadline');
+                    startTimer(); // Loop it or keep at 00:00:00
+                }
+            }, 1000);
+        }
+
+        startTimer();
+    </script>
+
+</body>
 </html>
