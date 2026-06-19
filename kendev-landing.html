@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KenDev Tech Academy — Become a Dollar-Earning Web Developer in 4 Weeks</title>
+<style>
+  :root{
+    --navy:#0B2A6B;
+    --navy-deep:#071B47;
+    --white:#FFFFFF;
+    --paper:#F4F7FC;
+    --gold:#E8A33D;
+    --gold-deep:#C77F1F;
+    --ink:#0E1B33;
+    --muted:#5C6B8A;
+    --line:#D9E2F3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&display=swap');
+  h1,h2,h3{font-family:'Fraunces',serif;letter-spacing:-0.01em;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ===== NAV ===== */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1100px;margin:0 auto;
+  }
+  .logo{font-family:'Fraunces',serif;font-weight:800;font-size:22px;color:var(--navy);}
+  .logo span{color:var(--gold-deep);}
+  .nav-cta{
+    background:var(--navy);color:var(--white);padding:10px 20px;border-radius:999px;
+    font-weight:600;font-size:14px;white-space:nowrap;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:linear-gradient(180deg,var(--navy-deep) 0%, var(--navy) 55%, var(--navy) 100%);
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+    padding:64px 0 80px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(232,163,61,0.18), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(255,255,255,0.06), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;z-index:2;text-align:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+    padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;
+    letter-spacing:0.02em;margin-bottom:28px;color:#FBE3BC;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(232,163,61,0.25);}
+  .hero h1{
+    font-size:clamp(34px,6vw,62px);
+    font-weight:700;
+    line-height:1.05;
+    max-width:880px;margin:0 auto 22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--gold);}
+  .hero-sub{
+    font-size:clamp(16px,2vw,19px);
+    color:#C9D5EE;
+    max-width:620px;margin:0 auto 36px;
+    font-weight:400;
+  }
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+  .btn-primary{
+    background:var(--gold);color:var(--navy-deep);
+    padding:16px 32px;border-radius:10px;font-weight:800;font-size:16px;
+    box-shadow:0 8px 24px rgba(232,163,61,0.35);
+    transition:transform .15s ease, box-shadow .15s ease;
+    border:none;cursor:pointer;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(232,163,61,0.45);}
+  .btn-secondary{
+    background:transparent;color:var(--white);
+    padding:16px 28px;border-radius:10px;font-weight:600;font-size:16px;
+    border:1.5px solid rgba(255,255,255,0.35);
+  }
+  .hero-note{font-size:13px;color:#9FB1D6;}
+
+  /* exchange ticker - signature element */
+  .ticker-wrap{
+    margin:52px auto 0;max-width:720px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:16px;padding:22px 28px;
+    position:relative;z-index:2;
+  }
+  .ticker-label{font-size:12px;color:#9FB1D6;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;font-weight:600;}
+  .ticker-row{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;}
+  .ticker-item{display:flex;flex-direction:column;align-items:center;min-width:120px;}
+  .ticker-skill{font-size:14px;color:#C9D5EE;margin-bottom:4px;}
+  .ticker-val{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--white);}
+  .ticker-arrow{color:var(--gold);font-size:22px;}
+  .ticker-result{color:var(--gold);}
+
+  /* ===== STATS BAR ===== */
+  .statbar{
+    background:var(--white);border-bottom:1px solid var(--line);
+    padding:28px 0;
+  }
+  .statbar-inner{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;
+  }
+  .stat-num{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--navy);}
+  .stat-label{font-size:13px;color:var(--muted);margin-top:4px;}
+
+  /* ===== SECTIONS GENERAL ===== */
+  section{padding:84px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 52px;}
+  .section-eyebrow{
+    font-size:13px;font-weight:700;color:var(--gold-deep);
+    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;
+  }
+  .section-head h2{font-size:clamp(28px,4vw,40px);color:var(--navy-deep);line-height:1.15;}
+  .section-head p{color:var(--muted);margin-top:14px;font-size:16px;}
+
+  /* ===== PROBLEM/PROMISE ===== */
+  .promise{background:var(--paper);}
+  .promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .promise-card{
+    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:36px;
+  }
+  .promise-card.old{border-left:4px solid #C7CFE0;}
+  .promise-card.new{border-left:4px solid var(--gold);}
+  .promise-card h3{font-size:20px;color:var(--navy-deep);margin-bottom:18px;}
+  .promise-card ul{list-style:none;}
+  .promise-card li{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:10px 0;font-size:15px;color:var(--ink);border-bottom:1px dashed var(--line);
+  }
+  .promise-card li:last-child{border-bottom:none;}
+  .promise-card.old li::before{content:"✕";color:#A6B0C8;font-weight:700;}
+  .promise-card.new li::before{content:"✓";color:var(--gold-deep);font-weight:700;}
+
+  /* ===== CURRICULUM ===== */
+  .curriculum-weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .week-card{
+    background:var(--white);border:1px solid var(--line);border-radius:16px;
+    padding:28px 22px;position:relative;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .week-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(11,42,107,0.08);}
+  .week-tag{
+    font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:var(--gold-deep);
+    margin-bottom:14px;
+  }
+  .week-card h3{font-size:18px;color:var(--navy-deep);margin-bottom:10px;line-height:1.25;}
+  .week-card p{font-size:14px;color:var(--muted);}
+  .week-extras{margin-top:60px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .extra-pill{
+    display:flex;align-items:center;gap:12px;background:var(--paper);
+    border-radius:12px;padding:16px 20px;font-size:14px;font-weight:600;color:var(--navy-deep);
+  }
+  .extra-pill .ic{font-size:20px;}
+
+  /* ===== DOLLAR TRACK ===== */
+  .dollar{background:var(--navy-deep);color:var(--white);position:relative;overflow:hidden;}
+  .dollar::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 0%, rgba(232,163,61,0.15), transparent 50%);
+  }
+  .dollar .section-head h2{color:var(--white);}
+  .dollar .section-head p{color:#B9C6E6;}
+  .dollar-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:2;
+  }
+  .dollar-card{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px;padding:30px 26px;
+  }
+  .dollar-card .num{font-family:'Fraunces',serif;font-size:32px;color:var(--gold);margin-bottom:14px;}
+  .dollar-card h3{font-size:17px;margin-bottom:10px;color:var(--white);}
+  .dollar-card p{font-size:14px;color:#B9C6E6;}
+
+  /* ===== PRICING ===== */
+  .pricing{background:var(--paper);}
+  .price-card{
+    max-width:520px;margin:0 auto;background:var(--white);
+    border-radius:22px;border:1px solid var(--line);
+    box-shadow:0 20px 50px rgba(11,42,107,0.1);
+    overflow:hidden;
+  }
+  .price-banner{
+    background:var(--gold);color:var(--navy-deep);text-align:center;
+    padding:10px;font-weight:800;font-size:13px;letter-spacing:0.03em;text-transform:uppercase;
+  }
+  .price-body{padding:40px 36px;text-align:center;}
+  .price-old{font-size:18px;color:var(--muted);text-decoration:line-through;margin-bottom:4px;}
+  .price-new{font-family:'Fraunces',serif;font-size:52px;font-weight:800;color:var(--navy-deep);}
+  .price-new sup{font-size:22px;top:-22px;}
+  .price-sub{font-size:13px;color:var(--muted);margin-bottom:28px;}
+  .price-list{text-align:left;margin-bottom:30px;}
+  .price-list li{
+    list-style:none;display:flex;gap:10px;align-items:flex-start;
+    font-size:15px;padding:9px 0;color:var(--ink);
+  }
+  .price-list li::before{content:"✓";color:var(--gold-deep);font-weight:800;}
+  .price-cta{
+    display:block;background:var(--navy);color:var(--white);
+    padding:18px;border-radius:12px;font-weight:800;font-size:16px;text-align:center;
+    box-shadow:0 10px 24px rgba(11,42,107,0.25);
+  }
+  .price-urgency{font-size:13px;color:var(--gold-deep);font-weight:700;margin-top:14px;}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;
+    font-weight:700;font-size:16px;color:var(--navy-deep);cursor:pointer;
+  }
+  .faq-q::after{content:"+";font-size:22px;color:var(--gold-deep);font-weight:400;}
+  details[open] .faq-q::after{content:"–";}
+  .faq-a{font-size:15px;color:var(--muted);margin-top:12px;line-height:1.6;}
+  summary{list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+
+  /* ===== FINAL CTA ===== */
+  .final{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--white);text-align:center;
+  }
+  .final h2{font-size:clamp(28px,4vw,42px);margin-bottom:18px;color:var(--white);}
+  .final p{color:#C9D5EE;max-width:560px;margin:0 auto 34px;font-size:16px;}
+
+  footer{background:var(--navy-deep);color:#8FA0C8;padding:32px 0;text-align:center;font-size:13px;}
+  footer .logo{color:var(--white);margin-bottom:6px;}
+  footer .logo span{color:var(--gold);}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:860px){
+    .promise-grid{grid-template-columns:1fr;}
+    .curriculum-weeks{grid-template-columns:1fr 1fr;}
+    .dollar-grid{grid-template-columns:1fr;}
+    .week-extras{grid-template-columns:1fr;}
+    .statbar-inner{grid-template-columns:1fr 1fr;row-gap:24px;}
+  }
+  @media (max-width:560px){
+    .curriculum-weeks{grid-template-columns:1fr;}
+    .hero-ctas{flex-direction:column;align-items:stretch;}
+    .ticker-row{gap:10px;}
+    section{padding:60px 0;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">Ken<span>Dev</span></div>
+    <a href="#enroll" class="nav-cta">Enroll Now</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow"><span class="dot"></span> Cohort starts 1 August — 50 discounted seats only</div>
+    <h1>Learn to build with AI. Get paid in <em>dollars</em>, from anywhere in Nigeria.</h1>
+    <p class="hero-sub">A 4-week live bootcamp teaching you AI-powered web development — and exactly how to land foreign clients who pay in dollars, not naira.</p>
+    <div class="hero-ctas">
+      <a href="#enroll" class="btn-primary">Secure My Seat — ₦30,000</a>
+      <a href="#curriculum" class="btn-secondary">See the curriculum</a>
+    </div>
+    <div class="hero-note">No prior coding experience required · Live weekly sessions · Certificate on completion</div>
+
+    <div class="ticker-wrap">
+      <div class="ticker-label">What this skill is worth</div>
+      <div class="ticker-row">
+        <div class="ticker-item">
+          <div class="ticker-skill">Local gig</div>
+          <div class="ticker-val">₦80,000</div>
+        </div>
+        <div class="ticker-arrow">→</div>
+        <div class="ticker-item">
+          <div class="ticker-skill">Foreign client</div>
+          <div class="ticker-val ticker-result">$800+</div>
+        </div>
+        <div class="ticker-arrow">→</div>
+        <div class="ticker-item">
+          <div class="ticker-skill">Per project</div>
+          <div class="ticker-val ticker-result">Paid in USD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="statbar">
+  <div class="container statbar-inner">
+    <div><div class="stat-num">500+</div><div class="stat-label">Spots open this cohort</div></div>
+    <div><div class="stat-num">4 weeks</div><div class="stat-label">Live, intensive training</div></div>
+    <div><div class="stat-num">1 Aug</div><div class="stat-label">Cohort start date</div></div>
+    <div><div class="stat-num">₦30,000</div><div class="stat-label">First 50 — discounted price</div></div>
+  </div>
+</div>
+
+<section class="promise">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">The shift</div>
+      <h2>Stop building for naira budgets.<br>Start building for the world.</h2>
+    </div>
+    <div class="promise-grid">
+      <div class="promise-card old">
+        <h3>The old way</h3>
+        <ul>
+          <li>Underpriced local gigs and unpaid "exposure" jobs</li>
+          <li>Learning to code with no plan for who pays you</li>
+          <li>Endless tutorials, no real project to show</li>
+          <li>Competing with thousands of local devs for scraps</li>
+        </ul>
+      </div>
+      <div class="promise-card new">
+        <h3>The KenDev way</h3>
+        <ul>
+          <li>Build real apps faster using AI tools, from day one</li>
+          <li>Learn exactly how to find and pitch foreign clients</li>
+          <li>Leave with a portfolio project and a payment setup that works</li>
+          <li>Get paid in dollars, on your own time, from home</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="curriculum">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Curriculum</div>
+      <h2>4 weeks. Live. Hands-on.</h2>
+      <p>Every week pairs a live teaching session with a weekly assessment, so you're building — not just watching.</p>
+    </div>
+    <div class="curriculum-weeks">
+      <div class="week-card">
+        <div class="week-tag">Week 1</div>
+        <h3>AI-Powered Web Foundations</h3>
+        <p>HTML, CSS & JavaScript fundamentals — built faster and smarter using AI coding tools.</p>
+      </div>
+      <div class="week-card">
+        <div class="week-tag">Week 2</div>
+        <h3>Real Projects with AI</h3>
+        <p>Build full websites and web apps using AI as your coding partner, not a crutch.</p>
+      </div>
+      <div class="week-card">
+        <div class="week-tag">Week 3</div>
+        <h3>Portfolio & Positioning</h3>
+        <p>Package your skills into a portfolio that gets you noticed by clients abroad.</p>
+      </div>
+      <div class="week-card">
+        <div class="week-tag">Week 4</div>
+        <h3>Landing Dollar Clients</h3>
+        <p>Where to find foreign clients, how to pitch, price in dollars, and get paid reliably.</p>
+      </div>
+    </div>
+    <div class="week-extras">
+      <div class="extra-pill"><span class="ic">🎥</span> Weekly live Q&A sessions with instructors</div>
+      <div class="extra-pill"><span class="ic">📝</span> Weekly assessments to track real progress</div>
+      <div class="extra-pill"><span class="ic">💬</span> Private community of 500+ fellow builders</div>
+      <div class="extra-pill"><span class="ic">🎓</span> Certificate of completion</div>
+    </div>
+  </div>
+</section>
+
+<section class="dollar">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Why dollars</div>
+      <h2>The same skill. A different currency.</h2>
+      <p>You're not just learning to code — you're learning to get paid like a global developer.</p>
+    </div>
+    <div class="dollar-grid">
+      <div class="dollar-card">
+        <div class="num">01</div>
+        <h3>Where foreign clients actually are</h3>
+        <p>The platforms and channels where international clients hire developers like you, every week.</p>
+      </div>
+      <div class="dollar-card">
+        <div class="num">02</div>
+        <h3>How to price in USD with confidence</h3>
+        <p>Pricing frameworks so you never undersell yourself again, no matter where you're based.</p>
+      </div>
+      <div class="dollar-card">
+        <div class="num">03</div>
+        <h3>Getting paid, reliably</h3>
+        <p>The payment setups Nigerian developers actually use to receive dollars without stress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="enroll">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Enrollment</div>
+      <h2>Join the August cohort</h2>
+    </div>
+    <div class="price-card">
+      <div class="price-banner">First 50 students only — discount ends after that</div>
+      <div class="price-body">
+        <div class="price-old">₦35,000</div>
+        <div class="price-new">₦30,000</div>
+        <div class="price-sub">One-time payment · Full 4-week access</div>
+        <ul class="price-list">
+          <li>4 weeks of live, hands-on training</li>
+          <li>Weekly Q&A sessions with instructors</li>
+          <li>Weekly assessments to track your progress</li>
+          <li>Foreign client acquisition playbook</li>
+          <li>Certificate of completion</li>
+          <li>Access to the KenDev builder community</li>
+        </ul>
+        <a href="https://wa.me/2340000000000?text=I%20want%20to%20join%20the%20KenDev%20August%20bootcamp" class="price-cta">Reserve My Seat on WhatsApp</a>
+        <div class="price-urgency">Cohort starts 1 August · Seats are filling up</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Questions</div>
+      <h2>Before you enroll</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Do I need coding experience to join?<span></span></summary>
+        <div class="faq-a">No. The bootcamp is built for beginners, walking you through web development from the ground up using AI tools to move faster than a traditional course.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Are the classes live or pre-recorded?</summary>
+        <div class="faq-a">Classes are live every week, with weekly Q&A sessions so you can ask questions and get direct feedback as you build.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How will this actually help me earn in dollars?</summary>
+        <div class="faq-a">Week 4 is dedicated entirely to finding, pitching, and getting paid by foreign clients — including the platforms to use and how to price your work in USD.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What happens after the first 50 seats are filled?</summary>
+        <div class="faq-a">The price moves to ₦35,000. The cohort itself stays open until we reach capacity, but the discount is limited to the first 50 enrollments.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is there a certificate?</summary>
+        <div class="faq-a">Yes — every student who completes the 4 weeks and assessments receives a KenDev certificate of completion.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="container">
+    <h2>Your dollar income starts with one decision.</h2>
+    <p>50 discounted seats. One cohort. Starting 1 August.</p>
+    <a href="#enroll" class="btn-primary">Secure My Seat — ₦30,000</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">Ken<span>Dev</span> Tech Academy</div>
+    <div>Nigeria's launchpad for AI-powered, dollar-earning developers.</div>
+  </div>
+</footer>
+
+</body>
+</html>
