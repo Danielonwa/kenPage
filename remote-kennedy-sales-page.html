@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Opportunity Pipeline System | Okoli Kennedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --obsidian:#0B0B0C;
+    --charcoal:#16161A;
+    --charcoal-2:#1D1D22;
+    --warm-white:#F5F3EE;
+    --gold:#D4AF37;
+    --gold-dim:#8a7526;
+    --blue:#2563EB;
+    --slate:#8A8A93;
+    --line:rgba(245,243,238,0.08);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--obsidian);
+    color:var(--warm-white);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.eyebrow{font-family:'Manrope',sans-serif;}
+
+  .num, .price-fig{font-family:'Fraunces',serif;font-style:italic;font-weight:600;}
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  section{padding:88px 0;position:relative;}
+
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:16px;
+  }
+
+  h2{font-size:clamp(26px,5vw,40px);font-weight:800;line-height:1.2;letter-spacing:-0.01em;}
+
+  .lede{color:var(--slate);font-size:17px;max-width:640px;margin-top:14px;}
+
+  p.copy{color:var(--warm-white);font-size:16px;max-width:640px;margin-top:16px;line-height:1.75;}
+  p.copy + p.copy{margin-top:10px;}
+  p.copy.tight{margin-top:6px;}
+  p.copy.dim{color:var(--slate);}
+  p.copy strong{color:var(--warm-white);}
+
+  .copy-block{margin-top:32px;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,11,12,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1100px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .brand{font-family:'Manrope',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.01em;}
+  .brand span{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);color:var(--obsidian);
+    font-weight:700;font-size:14px;
+    padding:10px 18px;border-radius:8px;
+    white-space:nowrap;
+  }
+
+  /* ============ HERO ============ */
+  .hero{padding:64px 0 40px;text-align:center;}
+  .hero h1{
+    font-size:clamp(28px,6vw,48px);
+    font-weight:800;
+    line-height:1.18;
+    letter-spacing:-0.02em;
+    max-width:840px;
+    margin:0 auto;
+  }
+  .hero-sub{
+    max-width:640px;margin:22px auto 0;
+    color:var(--slate);font-size:17px;
+  }
+  .hero-cta{margin-top:34px;}
+
+  .btn-primary{
+    display:inline-block;
+    background:linear-gradient(180deg,#E4C158,var(--gold));
+    color:var(--obsidian);
+    font-weight:700;
+    font-size:15px;
+    padding:16px 30px;
+    border-radius:10px;
+    box-shadow:0 8px 24px rgba(212,175,55,0.22);
+    border:none;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(212,175,55,0.32);}
+  .cta-note{margin-top:12px;font-size:13px;color:var(--slate);}
+
+  /* ============ PROBLEM / DARK SECTION ============ */
+  .shaded{background:var(--charcoal);}
+
+  /* ============ IMAGE FRAME (chat / cover screenshots) ============ */
+  .shot{
+    margin:28px auto 0;
+    max-width:340px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  }
+  .shot img{width:100%;}
+  .shot-caption{
+    text-align:center;font-size:13px;color:var(--slate);margin-top:10px;
+  }
+  .shot-row{
+    display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-top:32px;
+  }
+  .shot-row .shot{margin-top:0;}
+  .shot.wide{max-width:420px;}
+
+  /* ============ TESTIMONIAL NOTE ============ */
+  .testimonial-lead{
+    background:var(--charcoal-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 24px;
+    margin-top:8px;
+    max-width:640px;
+  }
+  .testimonial-lead p{color:var(--warm-white);font-size:15px;line-height:1.7;}
+  .testimonial-lead p + p{margin-top:8px;}
+
+  /* ============ CHECK LIST (learn how to) ============ */
+  .check-list{margin-top:32px;display:grid;gap:0;max-width:720px;}
+  .check-item{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .check-item:last-child{border-bottom:none;}
+  .check-mark{
+    flex:0 0 auto;
+    width:26px;height:26px;
+    border-radius:7px;
+    background:rgba(212,175,55,0.12);
+    border:1px solid rgba(212,175,55,0.35);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+    font-weight:700;
+    font-size:13px;
+    margin-top:2px;
+  }
+  .check-item h3{font-size:16px;font-weight:700;}
+  .check-item p{color:var(--slate);font-size:14.5px;margin-top:5px;line-height:1.65;}
+
+  /* Skill tag cloud */
+  .skill-tags{
+    margin-top:18px;
+    display:flex;flex-wrap:wrap;gap:8px;
+    max-width:720px;
+  }
+  .skill-tags span{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--line);
+    color:var(--warm-white);
+    font-size:13px;
+    padding:7px 13px;
+    border-radius:999px;
+  }
+
+  /* ============ BOLD METHOD CARDS ============ */
+  .method-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:32px;}
+  @media(min-width:720px){.method-grid{grid-template-columns:1fr 1fr;}}
+  .method-card{
+    background:var(--charcoal-2);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
+  }
+  .method-card h3{font-size:15.5px;font-weight:700;color:var(--gold);}
+  .method-card p{color:var(--slate);font-size:14.5px;margin-top:8px;line-height:1.65;}
+
+  /* ============ SIMPLE BULLET LIST (plus you'll also get) ============ */
+  .plain-list{margin-top:24px;display:grid;gap:0;max-width:640px;}
+  .plain-list li{
+    display:flex;align-items:flex-start;gap:12px;
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+    list-style:none;
+  }
+  .plain-list li:last-child{border-bottom:none;}
+  .plain-list li::before{
+    content:"✓";
+    color:var(--gold);
+    font-weight:700;
+    flex:0 0 auto;
+  }
+
+  /* ============ STACK CARD (offer items) ============ */
+  .offer-card{
+    background:var(--charcoal);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:32px 28px;
+    margin-top:32px;
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:26px;
+    align-items:center;
+  }
+  @media(max-width:640px){.offer-card{grid-template-columns:1fr;text-align:center;}}
+  .offer-card .shot{margin:0;max-width:180px;}
+  @media(max-width:640px){.offer-card .shot{margin:0 auto;}}
+  .offer-card h3{font-size:19px;font-weight:800;}
+  .offer-card p{color:var(--slate);font-size:14.5px;margin-top:8px;}
+  .offer-card .val{
+    display:inline-block;margin-top:12px;
+    color:var(--gold);font-size:13px;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+  }
+
+  /* ============ TOTAL VALUE BOX ============ */
+  .total-box{
+    max-width:460px;margin:36px auto 0;
+    background:var(--obsidian);
+    border:1px solid var(--gold-dim);
+    border-radius:20px;
+    padding:32px 28px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .total-lines{margin-top:6px;text-align:left;}
+  .total-lines div{
+    display:flex;justify-content:space-between;gap:12px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14.5px;color:var(--slate);
+  }
+  .total-lines div:last-child{border-bottom:none;}
+  .total-lines .item-name{color:var(--warm-white);}
+  .total-sum{
+    margin-top:16px;padding-top:16px;
+    border-top:1px dashed var(--gold-dim);
+    display:flex;justify-content:space-between;
+    font-size:15px;color:var(--slate);
+  }
+  .total-sum .value{text-decoration:line-through;}
+  .price-was{color:var(--slate);text-decoration:line-through;font-size:14px;margin-top:14px;}
+  .price-now{margin-top:6px;}
+  .price-now .currency{font-size:20px;color:var(--gold);vertical-align:top;}
+  .price-now .price-fig{font-size:48px;color:var(--gold);}
+  .total-box .btn-primary{width:100%;margin-top:22px;}
+  .price-fine{margin-top:14px;font-size:12.5px;color:var(--slate);}
+
+  /* ============ WHO ============ */
+  .who-grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px;}
+  @media(min-width:720px){.who-grid{grid-template-columns:1fr 1fr;}}
+  .who-card{
+    border-radius:16px;
+    padding:26px;
+    border:1px solid var(--line);
+  }
+  .who-card.yes{background:rgba(37,99,235,0.07);border-color:rgba(37,99,235,0.25);}
+  .who-card.no{background:rgba(255,255,255,0.02);}
+  .who-card h3{font-size:14px;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:16px;}
+  .who-card.yes h3{color:var(--blue);}
+  .who-card.no h3{color:var(--slate);}
+  .who-card ul{list-style:none;display:grid;gap:12px;}
+  .who-card li{font-size:14.5px;color:var(--warm-white);padding-left:18px;position:relative;}
+  .who-card.yes li::before{content:"✅";position:absolute;left:-2px;top:0;font-size:12px;}
+  .who-card.no li::before{content:"❌";position:absolute;left:-2px;top:0;font-size:12px;}
+  .fit-note{
+    margin-top:22px;color:var(--gold);font-weight:700;font-size:14px;
+    max-width:640px;letter-spacing:0.01em;
+  }
+
+  /* ============ FAQ ============ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;color:var(--warm-white);
+    font-family:'Manrope',sans-serif;font-weight:700;font-size:15.5px;
+    padding:18px 0;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .faq-q .plus{color:var(--gold);font-size:20px;transition:transform .25s ease;flex:0 0 auto;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;
+    transition:max-height .3s ease;
+    color:var(--slate);font-size:14.5px;
+  }
+  .faq-a-inner{padding-bottom:18px;}
+
+  /* ============ NOTICE ============ */
+  .notice{
+    margin-top:32px;
+    background:rgba(212,175,55,0.08);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:16px;
+    padding:26px;
+    max-width:640px;
+  }
+  .notice p{font-size:15px;color:var(--warm-white);}
+  .notice p + p{margin-top:8px;}
+  .notice strong{color:var(--gold);}
+
+  /* ============ FINAL CLOSE ============ */
+  .close{text-align:center;}
+  .close h2{max-width:680px;margin:0 auto;}
+  .close .lede{margin-left:auto;margin-right:auto;}
+  .close p.copy{margin-left:auto;margin-right:auto;text-align:center;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 0 100px;
+  }
+  .footer-inner{
+    display:flex;flex-direction:column;gap:8px;
+    text-align:center;
+  }
+  .footer-brand{font-family:'Manrope',sans-serif;font-weight:800;}
+  .footer-brand span{color:var(--gold);}
+  .footer-meta{color:var(--slate);font-size:13px;}
+  .footer-links{margin-top:10px;font-size:13px;color:var(--slate);}
+  .footer-links a{color:var(--slate);}
+  .footer-links a:hover{color:var(--gold);}
+
+  /* ============ STICKY MOBILE CTA ============ */
+  .sticky-cta{
+    position:fixed;bottom:0;left:0;right:0;
+    background:rgba(11,11,12,0.92);
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+    padding:12px 16px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+    z-index:60;
+    transform:translateY(100%);
+    transition:transform .3s ease;
+  }
+  .sticky-cta.show{transform:translateY(0);}
+  .sticky-cta .price-fig{color:var(--gold);font-size:18px;}
+  .sticky-cta .btn-primary{padding:12px 20px;font-size:13px;}
+  @media(min-width:900px){.sticky-cta{display:none;}}
+
+  @media(max-width:640px){
+    section{padding:56px 0;}
+    .check-item h3{font-size:15px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="brand">Okoli<span>Kennedy</span></div>
+    <a href="#pricing" class="nav-cta">Get Instant Access</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Stop Competing With 5,000 Other Applicants For The Same Remote Job.</h1>
+    <p class="hero-sub">Discover the Client Acquisition System That Has Helped 400+ African Freelancers Bypass Crowded Job Boards, Connect Directly With Decision-Makers, And Get Paid In Dollars By Businesses Already Looking For Their Skills.</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn-primary">Get Instant Access For N10,000</a>
+      <p class="cta-note">(Discount ends soon. Price returns to N25,000)</p>
+    </div>
+  </div>
+</section>
+
+<!-- OPENING NARRATIVE -->
+<section>
+  <div class="wrap">
+    <div class="copy-block reveal">
+      <p class="copy">You've applied for dozens of remote jobs…</p>
+      <p class="copy tight">Spent hours tweaking your CV…</p>
+      <p class="copy tight">Customized cover letters…</p>
+      <p class="copy tight">Refreshed your inbox every morning hoping someone would reply…</p>
+      <p class="copy tight">…only to hear absolutely nothing…</p>
+
+      <p class="copy" style="margin-top:26px;">You need to know something.</p>
+      <p class="copy tight"><strong>You're not failing because you're unqualified.</strong></p>
+      <p class="copy tight"><strong>You're failing because you're standing in the same queue as everyone else.</strong></p>
+
+      <p class="copy" style="margin-top:26px;">Every day, thousands of freelancers wake up and do the exact same thing.</p>
+      <p class="copy tight">Open LinkedIn.</p>
+      <p class="copy tight">Open Indeed.</p>
+      <p class="copy tight">Open Upwork.</p>
+      <p class="copy tight">You apply.</p>
+      <p class="copy tight">And apply.</p>
+      <p class="copy tight">And apply.</p>
+      <p class="copy tight">Then wait.</p>
+
+      <p class="copy" style="margin-top:26px;">Most of the time, you never hear back.</p>
+      <p class="copy tight">Not because you aren't qualified.</p>
+      <p class="copy tight">Not because you aren't smart.</p>
+      <p class="copy tight">Not because remote jobs don't exist.</p>
+      <p class="copy tight">But because you're searching where everyone else is searching.</p>
+
+      <p class="copy" style="margin-top:26px;">After a while, you start to think:</p>
+      <p class="copy tight">"Maybe I'm not good enough"</p>
+      <p class="copy tight">"Maybe freelancing is not for me"</p>
+
+      <p class="copy" style="margin-top:26px;">Just like my student, Jeffery who spent time everyday applying for jobs only to end up with no feedback, no interviews, no job offers.</p>
+      <p class="copy tight">Until…</p>
+      <p class="copy tight"><strong>He applied one of the strategies I gave him and landed 3 interviews in one day!</strong></p>
+    </div>
+
+    <div class="shot reveal">
+      <img src="assets/jeffery-3-interviews.jpg" alt="Jeffery messaging that he landed 3 interviews using the search method from chapter 2">
+    </div>
+
+    <div class="copy-block reveal">
+      <p class="copy">Or Micheal, who made his first million after landing a Ui/Ux role at a Canadian start up.</p>
+      <p class="copy">Before here, he used to apply on every job board he could find—LinkedIn, Glassdoor, indeed, Upwork, all of them.</p>
+      <p class="copy">All he got was rejection emails and ghosted applications. He was genuinely about to give up and start a small physical business.</p>
+      <p class="copy">But then, he met me and he started applying the strategies I exposed him to. After a few weeks, he landed a gig that made him his first million online.</p>
+    </div>
+
+    <div class="shot reveal">
+      <img src="assets/micheal-payment-681.jpg" alt="Micheal's WhatsApp message showing his first payment confirmation of $681.54 and calling it his first million">
+    </div>
+  </div>
+</section>
+
+<!-- ARE YOU NOT TIRED -->
+<section class="shaded">
+  <div class="wrap">
+    <div class="copy-block reveal">
+      <p class="copy">Are you not tired of tweaking your resume and portfolio everyday?</p>
+      <p class="copy">Are you not tired of receiving rejection emails while others are signing $3000/mon gigs?</p>
+      <p class="copy">Are you not tired of being ghosted after spending 2hrs crafting the perfect email pitch?</p>
+
+      <p class="copy" style="margin-top:28px;font-weight:800;letter-spacing:0.04em;">LISTEN…</p>
+
+      <p class="copy">The average remote role today receives hundreds, sometimes thousands of applications.</p>
+      <p class="copy">By the time you see the job placement, you're already competing against a crowd.</p>
+      <p class="copy">That's why so many talented people stay jobless.</p>
+      <p class="copy">Not because they lack skills.</p>
+      <p class="copy">But because they're using the same strategy as everyone else.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IF THE PROBLEM ISN'T YOUR SKILL -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">What If The Problem Isn't Your Skill?</h2>
+    <div class="copy-block reveal">
+      <p class="copy">What if the problem is where you're looking?</p>
+      <p class="copy">What if there were companies hiring Africans right now that never post on the platforms everyone talks about?</p>
+      <p class="copy">What if instead of joining the crowd, you could find a backdoor into opportunities before they become saturated?</p>
+      <p class="copy"><strong>That's exactly what The Opportunity Pipeline System was designed to help you do.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCING THE SYSTEM -->
+<section class="shaded" id="solution">
+  <div class="wrap">
+    <span class="eyebrow reveal">Introducing</span>
+    <h2 class="reveal">The Opportunity Pipeline System—How To Land High-Paying Remote Jobs As An African Freelancer.</h2>
+
+    <div class="shot reveal">
+      <img src="assets/book-cover-mockup.jpg" alt="Book cover: How To Land High Paying Remote Jobs As An African Freelancer, by Okoli Kennedy">
+    </div>
+
+    <div class="copy-block reveal">
+      <p class="copy">This is the exact framework I've used over the last 4 years to find opportunities beyond overcrowded platforms and connect with foreign employers and clients.</p>
+      <p class="copy">This isn't another course.</p>
+      <p class="copy">I'm not here to motivate you.</p>
+      <p class="copy">This isn't another generic remote work guide.</p>
+      <p class="copy"><strong>This is a practical system designed specifically for Africans looking to break into the global remote work market.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE THIS GUIDE -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">Inside this guide, you'll learn how to:</h2>
+
+    <div class="check-list">
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>Find opportunities long before they reach LinkedIn or Indeed.</h3>
+          <p>Most people only discover openings after hundreds of other applicants have already submitted their CVs. You'll learn how to identify companies that are growing, hiring, or actively spending money—often before they publicly advertise vacancies.</p>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>Contact the people who actually make hiring decisions.</h3>
+          <p>Instead of sending applications into a black hole… You'll learn how to identify founders, hiring managers and decision-makers—and how to approach them professionally without sounding spammy or desperate.</p>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>Find remote opportunities that actually match your skill.</h3>
+          <p>Whether you're a Copywriter, Virtual Assistant, Customer Support Rep, Graphic Designer, Video Editor, Social Media Manager, Developer, UI/UX Designer, Appointment Setter, Digital Marketer, Data Analyst, E-mail marketer, SEO Specialist, Media Buyer, Project Manager, Bookkeeper, Automation Specialist or almost any other remote professional—this system can help you find and land high-paying international clients and remote opportunities. It teaches you how to find opportunities for your specific skill, not just generic remote jobs.</p>
+          <div class="skill-tags">
+            <span>Copywriter</span><span>Virtual Assistant</span><span>Customer Support Rep</span><span>Graphic Designer</span><span>Video Editor</span><span>Social Media Manager</span><span>Developer</span><span>UI/UX Designer</span><span>Appointment Setter</span><span>Digital Marketer</span><span>Data Analyst</span><span>E-mail Marketer</span><span>SEO Specialist</span><span>Media Buyer</span><span>Project Manager</span><span>Bookkeeper</span><span>Automation Specialist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>The Zero-to-Proof Method™</h3>
+          <p>Don't have experience? No testimonials? No portfolio? Discover the exact framework for building irresistible proof that earns trust—even if you've never worked with a paying client before.</p>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>The Google Maps Opportunity Method™</h3>
+          <p>One of the most overlooked client acquisition strategies you'll ever learn. Discover how to turn ordinary Google Maps listings into a consistent stream of businesses that are already showing signs they need your services.</p>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>The Business Directory Goldmine™</h3>
+          <p>Tap into thousands of companies that already outsource work and are far more likely to hire remote professionals than businesses randomly found online.</p>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>The Premium Client Filter™</h3>
+          <p>Stop wasting time pitching businesses that will never pay what you're worth. Learn how to identify serious, high-value clients before investing your time.</p>
+        </div>
+      </div>
+
+      <div class="check-item reveal">
+        <span class="check-mark">✓</span>
+        <div>
+          <h3>The Confident Closing Blueprint™</h3>
+          <p>Master discovery calls, pricing conversations, proposals, and objection handling so you're no longer nervous when it's time to ask for the sale.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLUS YOU'LL ALSO GET -->
+<section class="shaded">
+  <div class="wrap">
+    <h2 class="reveal">Plus You'll Also Get…</h2>
+    <ul class="plain-list reveal">
+      <li>Cold email templates that don't sound copied and pasted</li>
+      <li>DM scripts for LinkedIn, Instagram, Facebook, and X</li>
+      <li>Proposal templates</li>
+      <li>Discovery call framework</li>
+      <li>Follow-up sequences</li>
+      <li>Pricing guidance</li>
+      <li>AI prompts for research and outreach</li>
+      <li>Portfolio-building blueprint</li>
+      <li>Prospecting checklists</li>
+      <li>End-of-chapter implementation exercises</li>
+    </ul>
+
+    <div class="copy-block reveal">
+      <p class="copy">By the time you finish this playbook, you won't just know where to find international clients—you'll have a complete, repeatable system for finding them, starting conversations, closing deals, and turning them into long-term sources of income.</p>
+    </div>
+
+    <div class="hero-cta reveal">
+      <a href="#pricing" class="btn-primary">Get Instant Access For N10,000</a>
+      <p class="cta-note">(Discount ends soon. Price returns to N25,000)</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY LISTEN TO ME -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">Why Should You Listen To Me?</h2>
+    <div class="copy-block reveal">
+      <p class="copy">Four years ago, I was exactly where many people reading this page are today.</p>
+      <p class="copy">I knew people were earning in dollars.</p>
+      <p class="copy">I knew remote work was real.</p>
+      <p class="copy">I knew opportunities existed.</p>
+      <p class="copy"><strong>But I had no idea how to consistently find them.</strong></p>
+
+      <p class="copy" style="margin-top:26px;">So I did what everyone else was doing.</p>
+      <p class="copy tight">I applied.</p>
+      <p class="copy tight">I waited.</p>
+      <p class="copy tight">I got ignored.</p>
+
+      <p class="copy" style="margin-top:26px;">Then I started noticing something.</p>
+      <p class="copy">The people getting results weren't always the smartest.</p>
+      <p class="copy">They weren't always the most qualified.</p>
+      <p class="copy"><strong>They simply knew where opportunities existed before everyone else arrived.</strong></p>
+
+      <p class="copy" style="margin-top:26px;">That realization completely changed my approach.</p>
+      <p class="copy">Over the next few years, I worked with companies and clients across:</p>
+    </div>
+
+    <ul class="plain-list reveal" style="max-width:320px;">
+      <li>United States</li>
+      <li>Canada</li>
+      <li>Australia</li>
+      <li>UAE</li>
+      <li>Philippines</li>
+    </ul>
+
+    <div class="copy-block reveal">
+      <p class="copy">And many more.</p>
+      <p class="copy">I eventually generated over $3,000 in a single month through remote work.</p>
+      <p class="copy">But the biggest reward wasn't the money.</p>
+      <p class="copy"><strong>It was the ability to support my family and create opportunities that simply weren't available before.</strong></p>
+      <p class="copy">Today I'm sharing the exact framework that helped me get there.</p>
+    </div>
+
+    <div class="hero-cta reveal">
+      <a href="#pricing" class="btn-primary">I Want Now Access For N10,000</a>
+      <p class="cta-note">(Discount ends soon. Price returns to N25,000)</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="shaded">
+  <div class="wrap">
+    <span class="eyebrow reveal">Real Results</span>
+    <h2 class="reveal">You don't have to take my word for it.</h2>
+    <p class="lede reveal">Hear from my students instead:</p>
+
+    <div class="shot-row reveal">
+      <div class="shot">
+        <img src="assets/micheal-payment-681.jpg" alt="Payment confirmation of $681.54 shared as a first payment success story">
+      </div>
+      <div class="shot">
+        <img src="assets/testimonial-clock-850.jpg" alt="Student message about landing an interview and accepting an $850 a month offer">
+      </div>
+      <div class="shot">
+        <img src="assets/testimonial-scatter-head.jpg" alt="Student message saying the book has a lot of information and picking two strategies to implement first">
+      </div>
+      <div class="shot">
+        <img src="assets/testimonial-canadian-2-5k.jpg" alt="Student message about landing a gig with a Canadian agency for $2.5k a month plus add-ons">
+      </div>
+      <div class="shot">
+        <img src="assets/testimonial-book-edible.jpg" alt="Student message saying the book is very edible and they are enjoying it">
+      </div>
+      <div class="shot">
+        <img src="assets/jeffery-us-companies.jpg" alt="Jeffery's message asking if the interviews were all US companies, confirming one from Canada and one from Austria">
+      </div>
+      <div class="shot wide">
+        <img src="assets/testimonial-94-pages.jpg" alt="Student conversation about going through the 94 page guide and landing an interview last week">
+      </div>
+    </div>
+
+    <div class="copy-block reveal">
+      <p class="copy">The goal isn't to impress you.</p>
+      <p class="copy"><strong>The goal is to show you that ordinary Africans are using these strategies to create extraordinary opportunities.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGINE -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">Imagine Where You Could Be 6 Months From Now…</h2>
+    <ul class="plain-list reveal" style="max-width:640px;">
+      <li>Imagine opening your inbox and seeing interview invitations instead of rejection emails.</li>
+      <li>Imagine your first $1,000 hitting your bank account.</li>
+      <li>Imagine finally being able to buy better gadgets.</li>
+      <li>Imagine being able to finally support your family.</li>
+      <li>Imagine working with clients in countries you have never visited.</li>
+      <li>Imagine finally having options.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- HERE'S EVERYTHING YOU GET -->
+<section class="shaded">
+  <div class="wrap">
+    <span class="eyebrow reveal">The Offer</span>
+    <h2 class="reveal">Here's Everything You Get If You Sign Up Today:</h2>
+
+    <div class="offer-card reveal">
+      <div class="shot">
+        <img src="assets/book-cover-mockup.jpg" alt="The Opportunity Pipeline System book cover">
+      </div>
+      <div>
+        <h3>1. The Opportunity Pipeline System</h3>
+        <p>A step-by-step guide showing you how to uncover hidden opportunities, position yourself correctly, and reach foreign employers.</p>
+        <span class="val">Value: ₦25,000</span>
+      </div>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="shot">
+        <img src="assets/hidden-job-boards-cover.jpg" alt="70+ Hidden Job Boards That Are Open To Nigerian Freelancers, cover">
+      </div>
+      <div>
+        <h3>2. Hidden Job Board Vault</h3>
+        <p>Get immediate access to 70+ carefully selected job boards and platforms actively hiring remote talent from Africa. Many of these opportunities never appear on LinkedIn or Indeed.</p>
+        <span class="val">Value: ₦15,000</span>
+      </div>
+    </div>
+
+    <div class="offer-card reveal">
+      <div class="shot">
+        <img src="assets/private-support-group.jpg" alt="Remote Jobs Acquisition Support Group, 372 members">
+      </div>
+      <div>
+        <h3>3. Private Support Group</h3>
+        <p>Most people buy a course and get left alone. That's not how this works. You'll be added to our private community where you can ask questions, get support and feedback, and network with fellow freelancers while implementing the strategies.</p>
+        <span class="val">Value: ₦25,000</span>
+      </div>
+    </div>
+
+    <div class="total-box reveal" id="pricing">
+      <div class="total-lines">
+        <div><span class="item-name">The Opportunity Pipeline System</span><span>₦25,000</span></div>
+        <div><span class="item-name">70+ Hidden Job Board Vault</span><span>₦15,000</span></div>
+        <div><span class="item-name">Support Community Access</span><span>₦25,000</span></div>
+      </div>
+      <div class="total-sum">
+        <span>Total Value</span>
+        <span class="value">₦65,000+</span>
+      </div>
+      <div class="price-was">Total Value: ₦65,000+</div>
+      <div class="price-now"><span class="currency">₦</span><span class="price-fig">10,000</span></div>
+      <div class="cta-note" style="margin-top:2px;">Today's Price</div>
+      <a href="#" class="btn-primary">Get Instant Access Now For N10,000</a>
+      <div class="price-fine">(Discount ends soon. Price returns to N25,000)</div>
+    </div>
+  </div>
+</section>
+
+<!-- THIS IS FOR YOU IF -->
+<section>
+  <div class="wrap">
+    <h2 class="reveal">THIS IS FOR YOU IF...</h2>
+
+    <div class="who-grid">
+      <div class="who-card yes reveal">
+        <h3>This is for you if</h3>
+        <ul>
+          <li>You've applied for dozens of remote jobs and rarely hear back</li>
+          <li>You have a skill but struggle to find opportunities</li>
+          <li>You're tired of competing with hundreds of applicants on LinkedIn and Indeed</li>
+          <li>You want access to opportunities most people never discover</li>
+          <li>You're serious about building a remote career</li>
+        </ul>
+      </div>
+      <div class="who-card no reveal">
+        <h3>Who This Is NOT For</h3>
+        <ul>
+          <li>People looking for overnight success</li>
+          <li>People unwilling to take action</li>
+          <li>People who expect opportunities to come without effort</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="fit-note reveal">AND, YES. IT DOESN'T MATTER WHAT SKILL YOU HAVE, THE GUIDE WILL HELP YOU FIND JOBS THAT APPLY TO YOUR SKILLSET.</p>
+    <p class="copy reveal" style="margin-top:16px;color:var(--slate);">This system works best for people willing to follow the process consistently.</p>
+
+    <div class="hero-cta reveal">
+      <a href="#pricing" class="btn-primary">Get Instant Access Now For N10,000</a>
+      <p class="cta-note">(Discount ends soon. Price returns to N25,000)</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="shaded" id="faq">
+  <div class="wrap">
+    <span class="eyebrow reveal">FAQ</span>
+    <h2 class="reveal">Frequently Asked Questions</h2>
+
+    <div class="faq-list" style="margin-top:20px;">
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What if I'm a beginner?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Many students started with little or no experience. The framework focuses on finding opportunities and positioning yourself properly.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What if I don't have a portfolio?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">You'll learn strategies that help you position yourself even if you're starting from scratch.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">What if my skill isn't listed?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">The principles work across multiple industries and skill sets.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Is this only for Nigerians?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No. The strategies apply to Africans across multiple countries.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">How do I receive access?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Immediately after payment, you'll receive the ebook, the 70-job-board vault, and access to the mentorship group.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Is this a job guarantee?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No one can ethically guarantee employment. What we provide is a proven framework, tools, resources, and support designed to significantly improve your chances.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">Why are you selling this if it works?<span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Because helping more Africans access global opportunities creates impact beyond my own success.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANT NOTICE -->
+<section>
+  <div class="wrap">
+    <div class="notice reveal">
+      <p><strong>IMPORTANT NOTICE!</strong></p>
+      <p>The current ₦10,000 pricing is FOR TODAY ONLY.</p>
+      <p>Once we hit 500 students, the price will increase to ₦25,000.</p>
+      <p>If you've been waiting for the right time to start, this is it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CLOSE -->
+<section class="close shaded">
+  <div class="wrap">
+    <h2 class="reveal">One Year From Today...</h2>
+    <div class="copy-block reveal">
+      <p class="copy">You can still be applying for the same jobs.</p>
+      <p class="copy">Still refreshing LinkedIn.</p>
+      <p class="copy">Still hoping somebody notices your application.</p>
+      <p class="copy" style="margin-top:20px;">Or...</p>
+      <p class="copy">You can start learning a different approach.</p>
+      <p class="copy">A framework designed to help you find opportunities beyond the platforms everyone else is fighting over.</p>
+      <p class="copy" style="margin-top:20px;"><strong>The choice is yours.</strong></p>
+    </div>
+
+    <div class="hero-cta reveal">
+      <a href="#pricing" class="btn-primary">Get Instant Access Today For Just ₦10,000</a>
+      <p class="cta-note">Because the opportunity you're looking for might not be where everyone else is searching.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">Okoli<span>Kennedy</span></div>
+    <div class="footer-meta">The Opportunity Pipeline System. Instant delivery. ₦10,000 one-time payment.</div>
+    <div class="footer-links">
+      <a href="#faq">FAQ</a> &nbsp;·&nbsp; <a href="#pricing">Pricing</a> &nbsp;·&nbsp; <a href="#solution">What's Included</a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div><span class="price-fig">₦10,000</span></div>
+  <a href="#pricing" class="btn-primary">Get Instant Access</a>
+</div>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem => {
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Sticky mobile CTA — show after hero scrolled past
+  const stickyCta = document.getElementById('stickyCta');
+  const heroSection = document.querySelector('.hero');
+  const stickyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting && entry.boundingClientRect.top < 0){
+        stickyCta.classList.add('show');
+      } else {
+        stickyCta.classList.remove('show');
+      }
+    });
+  }, { threshold: 0 });
+  stickyObserver.observe(heroSection);
+</script>
+
+</body>
+</html>
