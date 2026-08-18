@@ -411,6 +411,8 @@ body{background:#fff;}
 @media(max-width:760px){.video-box.live-video{aspect-ratio:9/13;max-height:none}.floating-live{left:12px;bottom:88px;width:145px;border-radius:14px}.floating-live .sound-prompt{padding:8px 10px;font-size:9px}.floating-live .live-cap{display:none}.proof-headline{font-size:clamp(38px,11vw,56px)}.proof-intro{font-size:15px;padding:0 4px}}
 
 </style>
+
+<style>.floating-live{z-index:99999!important;display:block!important}.floating-live.show{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}@media(max-width:760px){.floating-live{bottom:96px!important}}</style>
 </head>
 <body>
 
@@ -838,5 +840,30 @@ body{background:#fff;}
 
 
 <div class="floating-live" id="floatingLive"><video id="floatingVideo" muted loop playsinline preload="metadata"><source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4"></video><div class="live-badge"><i></i> LIVE</div><button class="sound-prompt" id="floatingSound" type="button"><span>🔇</span><strong>Tap for sound</strong></button><div class="live-cap">Watch the system in action</div></div>
+
+<script>
+(function(){
+ function init(){
+  var hero=document.getElementById('heroLiveVideo'), hv=document.getElementById('heroVideo');
+  var flo=document.getElementById('floatingLive'), fv=document.getElementById('floatingVideo');
+  var hs=document.getElementById('soundPrompt'), fs=document.getElementById('floatingSound');
+  if(!hero||!hv||!flo||!fv) return;
+  var floating=false, sound=false;
+  hv.muted=true; fv.muted=true;
+  function sync(){ hv.muted=!sound; fv.muted=!sound; if(hs)hs.classList.toggle('hide',sound); if(fs)fs.classList.toggle('hide',sound); }
+  function show(){ if(floating)return; floating=true; try{fv.currentTime=hv.currentTime}catch(e){} flo.classList.add('show'); hv.pause(); sync(); fv.play().catch(function(){}); }
+  function hide(){ if(!floating)return; floating=false; try{hv.currentTime=fv.currentTime}catch(e){} flo.classList.remove('show'); fv.pause(); sync(); hv.play().catch(function(){}); }
+  function check(){ var r=hero.getBoundingClientRect(); if(r.bottom<=0)show(); else hide(); }
+  function enable(){ sound=true; sync(); (floating?fv:hv).play().catch(function(){}); }
+  if(hs)hs.addEventListener('click',function(e){e.stopPropagation();enable();});
+  if(fs)fs.addEventListener('click',function(e){e.stopPropagation();enable();});
+  hero.addEventListener('click',function(){if(!sound)enable();});
+  flo.addEventListener('click',function(e){if(e.target.closest('button'))return;if(!sound)enable();});
+  window.addEventListener('scroll',check,{passive:true}); window.addEventListener('resize',check);
+  hv.play().catch(function(){}); check();
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body>
 </html>
