@@ -505,6 +505,137 @@ body{background:#fff;}
     min-width:0;
   }
 }
+
+  /* ===== 90-DAY GUARANTEE ===== */
+
+.guarantee-section{
+  padding:0 0 80px;
+}
+
+.guarantee-card{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+  max-width:860px;
+  margin:0 auto;
+  padding:34px 38px;
+  background:linear-gradient(135deg,#fff8f6,#fff);
+  border:2px solid var(--red);
+  border-radius:20px;
+  box-shadow:
+    10px 10px 0 rgba(215,38,30,.10),
+    0 20px 45px rgba(21,18,15,.08);
+  overflow:hidden;
+}
+
+.guarantee-card::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(215,38,30,.06);
+  right:-90px;
+  top:-100px;
+}
+
+.guarantee-icon{
+  flex:none;
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  background:var(--red-tint);
+  border:1px solid #F3C7C4;
+  border-radius:14px;
+}
+
+.guarantee-content{
+  position:relative;
+  z-index:1;
+}
+
+.guarantee-kicker{
+  display:inline-block;
+  margin-bottom:10px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.12em;
+  color:var(--red-dark);
+}
+
+.guarantee-content h2{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(24px,3.5vw,36px);
+  line-height:1.1;
+  letter-spacing:-.03em;
+  margin:0 0 14px;
+}
+
+.guarantee-content h2 span{
+  color:var(--red);
+}
+
+.guarantee-content p{
+  margin:0;
+  max-width:700px;
+  color:var(--ink-soft);
+  font-size:15.5px;
+  line-height:1.7;
+  font-weight:500;
+}
+
+.guarantee-content strong{
+  color:var(--ink);
+  font-weight:800;
+}
+
+.guarantee-promise{
+  margin-top:18px;
+  font-family:'Sora',sans-serif;
+  font-size:15px;
+  font-weight:800;
+  color:var(--red-dark);
+}
+
+@media(max-width:650px){
+  .guarantee-section{
+    padding:0 0 56px;
+  }
+
+  .guarantee-card{
+    flex-direction:column;
+    gap:16px;
+    padding:26px 22px;
+    border-radius:18px;
+  }
+
+  .guarantee-icon{
+    width:46px;
+    height:46px;
+    font-size:23px;
+  }
+
+  .guarantee-kicker{
+    font-size:10px;
+  }
+
+  .guarantee-content h2{
+    font-size:25px;
+  }
+
+  .guarantee-content p{
+    font-size:14px;
+    line-height:1.65;
+  }
+
+  .guarantee-promise{
+    font-size:14px;
+  }
+}
 </style>
 
 <style>.floating-live{z-index:99999!important;display:block!important}.floating-live.show{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}@media(max-width:760px){.floating-live{bottom:96px!important}}</style>
@@ -686,6 +817,36 @@ src="https://www.facebook.com/tr?id=965485015809459&ev=PageView&noscript=1"
       <div class="stack-total"><span class="l">Total value</span><span class="n">₦65,000</span></div>
       <div class="today-row"><span class="l">Today you pay</span><span class="n">₦10,000</span></div>
       <a href="https://selar.com/dp6206d6f2" target="_blank" class="btn btn-primary btn-block" style="margin-top:26px">Show Me The Method</a>
+    </div>
+  </div>
+</section>
+
+  <!-- 90-DAY GUARANTEE -->
+<section class="guarantee-section">
+  <div class="wrap">
+    <div class="guarantee-card reveal">
+
+      <div class="guarantee-icon">🛡️</div>
+
+      <div class="guarantee-content">
+        <span class="guarantee-kicker">90-DAY RESULTS GUARANTEE</span>
+
+        <h2>
+          Give it 90 days. <span>Get results or your money back.</span>
+        </h2>
+
+        <p>
+          If you follow the strategies consistently for 90 days, keep proof
+          of your efforts, and you don't see meaningful results, I'll give
+          you a <strong>100% refund</strong> —
+          <strong>plus a public apology for wasting your time.</strong>
+        </p>
+
+        <div class="guarantee-promise">
+          That's my promise.
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
