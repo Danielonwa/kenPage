@@ -675,6 +675,49 @@ body{background:#fff;}
 .proof-line:first-child {
   margin-bottom: 4px;
 }
+
+  .payment-proof-grid{
+  column-count:4;
+  column-gap:18px;
+  margin-top:28px;
+}
+
+.payment-proof-grid .proof-item{
+  break-inside:avoid;
+  margin-bottom:18px;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+
+.payment-proof-grid .proof-item img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* Tablet */
+@media(max-width:900px){
+  .payment-proof-grid{
+    column-count:2;
+  }
+}
+
+/* Mobile: clean 2 × 2 grid */
+@media(max-width:520px){
+  .payment-proof-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    column-count:unset;
+    margin-top:22px;
+  }
+
+  .payment-proof-grid .proof-item{
+    margin:0;
+    border-radius:10px;
+  }
+}
 </style>
 
 <style>.floating-live{z-index:99999!important;display:block!important}.floating-live.show{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}@media(max-width:760px){.floating-live{bottom:96px!important}}</style>
@@ -769,7 +812,24 @@ src="https://www.facebook.com/tr?id=965485015809459&ev=PageView&noscript=1"
         <h2 class="sec-title" style="font-size:clamp(26px,3.6vw,38px)">The Opportunity Pipeline System — How To Land High-Paying Remote Jobs As An African Freelancer.</h2>
         <p class="sec-sub">This is the exact framework I've used over the last 4 years to find opportunities beyond overcrowded platforms and connect with foreign employers and clients. This isn't another course, and I'm not here to motivate you — it's a practical system built for Africans breaking into the global remote work market.</p>
         <p class="sec-sub proof-line">I'm Not Teaching You Somethimg I Haven't Done Myself.</p>
-        <p class="sec-sub proof-line">Here are a few real payments I've received from my freelance work.</p>
+        <p class="sec-sub proof-line">Here are a few real payments I've received from my freelance work:</p>
+        <div class="payment-proof-grid">
+  <div class="proof-item">
+    <img src="YOUR-IMAGE-1.jpg" alt="Freelance payment proof">
+  </div>
+
+  <div class="proof-item">
+    <img src="YOUR-IMAGE-2.jpg" alt="Freelance payment proof">
+  </div>
+
+  <div class="proof-item">
+    <img src="YOUR-IMAGE-3.jpg" alt="Freelance payment proof">
+  </div>
+
+  <div class="proof-item">
+    <img src="YOUR-IMAGE-4.jpg" alt="Freelance payment proof">
+  </div>
+</div>
         <div class="tag-row">
           <span class="tag">Copywriter</span><span class="tag">Virtual Assistant</span><span class="tag">Customer Support</span>
           <span class="tag">Graphic Designer</span><span class="tag">Video Editor</span><span class="tag">Social Media Manager</span>
